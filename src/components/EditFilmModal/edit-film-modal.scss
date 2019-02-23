@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+label {
+  font-weight: 500;
+}
+
+.error-msg {
+  color: $error-color;
+  font-weight: 600;
+}
+
+.error-input {
+  outline: $error-color 1px solid;
+}

@@ -1,0 +1,23 @@
+@import '../../styles/variables.scss';
+
+.film-card {
+  width: 19rem;
+  display: flex;
+  flex-direction: column;
+  margin: 25px 15px;
+  height: 765px;
+  background-color: #eee ;
+  .my-card-img {
+    height: 425px;
+  }
+  .card-text {
+    flex-direction: column;
+    justify-content: space-between ;
+    span {
+      font-weight: 600;
+    }
+  }
+  .edit-button {
+    margin-right: 6px;
+  }
+}
