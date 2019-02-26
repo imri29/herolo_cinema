@@ -8,11 +8,10 @@ export const ADD_FILM = 'ADD_FILM';
 
 export const fetchFilms = () => {
   const API_KEY = 'b5677617';
-  const filmTitle = 'baby';
+  const filmTitle = 'fight';
 
   return async dispatch => {
-    const response = (await axios.get(`http://www.omdbapi.com/?s=${filmTitle}&apikey=${API_KEY}`))
-      .data.Search;
+    const response = (await axios.get(`http://www.omdbapi.com/?s=${filmTitle}&apikey=${API_KEY}`)).data.Search;
     const promisesArray = response.map(film =>
       axios.get(`http://www.omdbapi.com/?t=${film.Title}&apikey=${API_KEY}`)
     );

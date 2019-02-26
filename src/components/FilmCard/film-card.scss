@@ -1,23 +1,35 @@
 @import '../../styles/variables.scss';
 
 .film-card {
-  width: 19rem;
-  display: flex;
-  flex-direction: column;
-  margin: 25px 15px;
-  height: 765px;
-  background-color: #eee ;
+  width: 17rem;
+  margin: 15px;
+  height: 650px; // shorten
+  background-color: $card-bg-color;
+  border: none;
+  font-family: $main-font;
   .my-card-img {
-    height: 425px;
+    height: 300px;
+    object-fit: cover;
+  }
+  .card-title {
+    font-weight: 700;
+    font-size: 1.3rem;
   }
   .card-text {
     flex-direction: column;
-    justify-content: space-between ;
+    justify-content: space-between;
     span {
       font-weight: 600;
     }
   }
-  .edit-button {
-    margin-right: 6px;
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: calc(100% - 40px);
+    position: absolute;
+    bottom: 17px;
+    .delete-button {
+      width: 103px;
+    }
   }
 }

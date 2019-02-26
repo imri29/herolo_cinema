@@ -14,16 +14,16 @@ import { removeFilm } from '../../actions/index';
 
 class FilmCard extends Component {
   state = {
-    show: false,
+    showModal: false,
     isInEditMode: false
   };
 
   handleShow = () => {
-    this.setState({ show: true });
+    this.setState({ showModal: true });
   };
 
   handleClose = () => {
-    this.setState({ show: false });
+    this.setState({ showModal: false });
   };
 
   openDeleteFilmModal = () => {
@@ -44,33 +44,33 @@ class FilmCard extends Component {
 
   render() {
     const { Poster, Title, Year, Runtime, Genre, Director, imdbID } = this.props;
-    const { show, isInEditMode } = this.state;
+    const { showModal, isInEditMode } = this.state;
     return (
       <>
         <Card className="film-card shadow">
-          <Card.Img className="my-card-img" variant="top" src={Poster} />
+          <Card.Img className="my-card-img" variant="top" src={Poster} alt={Title} />
           <Card.Body className="card-text">
             <Card.Title>{Title}</Card.Title>
-            <Card.Text><span>Director:</span> {Director}</Card.Text>
-            <Card.Text><span>Year:</span> {Year}</Card.Text>
-            <Card.Text><span>Genre:</span> {Genre}</Card.Text>
-            <Card.Text> <span>Runtime:</span> {Runtime}</Card.Text>
-            <Card.Text><span>imdbID:</span> {imdbID}</Card.Text>
+            <Card.Text><span>Director: </span>{Director}</Card.Text>
+            <Card.Text><span>Year: </span>{Year}</Card.Text>
+            <Card.Text><span>Genre: </span>{Genre}</Card.Text>
+            <Card.Text><span>Runtime: </span>{Runtime}</Card.Text>
+            <Card.Text><span>imdbID: </span>{imdbID}</Card.Text>
             <div className="buttons">
+              <Button className="delete-button" variant="outline-danger" onClick={this.openDeleteFilmModal}>
+                <i className="fas fa-trash" />
+              </Button>
               <Button
                 className="edit-button"
-                variant="primary"
+                variant="info"
                 onClick={this.openEditFilmModal}
               >
                 Edit Details
               </Button>
-              <Button variant="outline-danger" onClick={this.openDeleteFilmModal}>
-                Delete Film
-              </Button>
             </div>
           </Card.Body>
         </Card>
-        <BootstrapModal show={show} onHide={this.handleClose}>
+        <BootstrapModal show={showModal} onHide={this.handleClose}>
           {isInEditMode ? (
             <EditFilmModal
               onCancel={this.handleClose}

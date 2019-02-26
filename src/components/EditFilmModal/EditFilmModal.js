@@ -53,26 +53,29 @@ class EditFilmModal extends Component {
   };
 
   doesTitleExist = val => {
-    return (_.find(this.props.films, film => film.Title === val))
+    return _.find(this.props.films, film => film.Title === val);
   };
 
   validate = formValues => {
     const errors = {};
-    const { Title, Director, Year, Genre } = formValues;
+    const { Title, Director, Year, Genre, Runtime } = formValues;
     if (!Title) {
       errors.Title = 'Title cannot be empty';
     }
-    if (this.doesTitleExist(Title)) {
-      errors.Title = 'Title already exists'
+    if (this.doesTitleExist(Title) && this.props.isNew) {
+      errors.Title = 'Title already exists';
     }
     if (!Director) {
-      errors.Director = 'Director cannot be empty';
+      errors.Director = `Must specify a director's name`;
     }
     if (Year.length !== 4 || !this.isDateValid(Year)) {
       errors.Year = 'Year must be entered with four digits, e.g. 1976';
     }
     if (!Genre) {
-      errors.Genre = 'Genre cannot be empty';
+      errors.Genre = 'Must specify a genre';
+    }
+    if (!Runtime) {
+      errors.Runtime = 'Must specify a runtime';
     }
     return errors;
   };
@@ -96,7 +99,6 @@ class EditFilmModal extends Component {
                     name={name}
                     value={this.state[name]}
                     onChange={this.onInputChange}
-                    // className={this.state.errors[name] !== '' ? "error-input" : null}
                   />
                   <p className="error-msg">{this.state.errors[name]}</p>
                 </Form.Group>
@@ -108,7 +110,7 @@ class EditFilmModal extends Component {
           <Button variant="secondary" onClick={onCancel}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={this.onSave}>
+          <Button variant="info" onClick={this.onSave}>
             Save Changes
           </Button>
         </Modal.Footer>

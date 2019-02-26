@@ -1,0 +1,33 @@
+.spinner {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  &::before {
+    position: absolute;
+    content: '';
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    box-shadow: inset -5px 0 0 5px;
+    clip: rect(0 64px 32px 0);
+    animation: rotator 1s infinite linear;
+  }
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(-180deg);
+    box-shadow: inset -5px 0 0 5px;
+  }
+  50% {
+    transform: rotate(0deg);
+    box-shadow: inset -1px 0 0 1px;
+  }
+  100% {
+    transform: rotate(180deg);
+    box-shadow: inset -5px 0 0 5px;
+  }
+}

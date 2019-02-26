@@ -1,9 +1,18 @@
+@import '../../styles/variables';
+
+h1.text-center {
+  font-family: $header-font;
+  font-size: 7rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
 .film-list {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  margin: 20px;
+  margin: 8px 12px;
 }
 

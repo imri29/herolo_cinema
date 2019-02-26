@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.add-film {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 8px 8px 16px 16px;
+  background: transparent;
+  border: none;
+  z-index: 100;
+  opacity: 0.8;
+  &:focus {
+    outline: none;
+  }
+  .fa-plus-circle {
+    cursor: pointer;
+    @media (max-width: $mobile-size) {
+      font-size: 50px;
+    }
+  }
+}

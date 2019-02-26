@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // components
 import FilmList from '../FilmsList/FilmList';
 
-class App extends Component {
-  render() {
-    return (
-      <FilmList/>
-    )
-  }
-}
+const App = () => {
+  return (
+    <div className="container">
+      <FilmList />
+    </div>
+  );
+};
 
 export default App;
