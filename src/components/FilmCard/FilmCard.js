@@ -12,6 +12,8 @@ import EditFilmModal from '../EditFilmModal/EditFilmModal';
 // actions
 import { removeFilm } from '../../actions/index';
 
+import { DEFAULT_FILM_POSTER as fallbackPoster } from '../FilmsList/FilmList';
+
 class FilmCard extends Component {
   state = {
     showModal: false,
@@ -48,7 +50,15 @@ class FilmCard extends Component {
     return (
       <>
         <Card className="film-card shadow">
-          <Card.Img className="my-card-img" variant="top" src={Poster} alt={Title} />
+          <Card.Img
+            className="my-card-img"
+            variant="top"
+            src={Poster}
+            onError={e => {
+              e.target.onerror = null;
+              e.target.src = fallbackPoster;
+            }}
+            alt={Title} />
           <Card.Body className="card-text">
             <Card.Title>{Title}</Card.Title>
             <Card.Text><span>Director: </span>{Director}</Card.Text>

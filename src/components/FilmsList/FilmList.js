@@ -16,7 +16,7 @@ import { fetchFilms, addFilm } from '../../actions';
 // helpers
 import removeSpecialChars from '../../helpers/removeSpecialChars';
 
-const DEFAULT_FILM_IMG =
+export const DEFAULT_FILM_POSTER =
   'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1728&q=80';
 
 class FilmList extends Component {
@@ -70,9 +70,8 @@ class FilmList extends Component {
               Year=""
               Runtime=""
               Genre=""
-              Poster={DEFAULT_FILM_IMG}
+              Poster={DEFAULT_FILM_POSTER}
               imdbID={_.uniqueId('tt99999')}
-              isNew={true}
             />
           </BootstrapModal>
         </div>

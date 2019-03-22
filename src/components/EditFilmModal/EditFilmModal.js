@@ -53,7 +53,9 @@ class EditFilmModal extends Component {
   };
 
   doesTitleExist = val => {
-    return _.find(this.props.films, film => film.Title === val);
+    const { films, imdbID } = this.props;
+    const filmsExcludingCurrentFilm = _.filter(films, film => film.imdbID !== imdbID);
+    return _.some(filmsExcludingCurrentFilm, film => _.toLower(film.Title) === _.toLower(val));
   };
 
   validate = formValues => {
@@ -62,7 +64,7 @@ class EditFilmModal extends Component {
     if (!Title) {
       errors.Title = 'Title cannot be empty';
     }
-    if (this.doesTitleExist(Title) && this.props.isNew) {
+    if (this.doesTitleExist(Title)) {
       errors.Title = 'Title already exists';
     }
     if (!Director) {
